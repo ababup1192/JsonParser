@@ -21,8 +21,14 @@ class ParserSpec extends FlatSpec with Matchers {
       }
     }""")
 
-    println(parseResult.get)
-
-    true should be === true
+    parseResult.get should be === Map("address book" ->
+      Map(
+        "name" -> "John Smith",
+        "address" -> Map(
+          "street" -> "10 market street", "city" -> "San Fransisco, CA", "zip" -> 94111
+        ),
+        "phone number" -> List("080-xxx-xxxx", "080-xxx-yyyy")
+      )
+    )
   }
 }
